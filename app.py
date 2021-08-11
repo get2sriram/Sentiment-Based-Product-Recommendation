@@ -1,10 +1,9 @@
 from flask import Flask, jsonify,  request, render_template
 import joblib
 import pandas as pd
-
+from model import *
 
 app = Flask(__name__)
-model_load = pd.read_pickle("./models/recommendation.pkl")
 
 @app.route('/')
 def home():
@@ -15,8 +14,9 @@ def predict():
     if (request.method == 'POST'):
         user_name = [x for x in request.form.values()]
         print(user_name)
-        output = model_load.loc[user_name[0]].sort_values(ascending=False)[0:20]
-        return render_template('index.html', prediction_text='Churn Output {}'.format(output))
+        final_recomm = recommendation(user_name)
+        graphJSON0 = final_recomm.to_json(orient='records')
+        return render_template('index.html',graphJSON0=graphJSON0)
     else :
         return render_template('index.html')
 
