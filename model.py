@@ -41,7 +41,7 @@ def recommendation(usr_input):
     filename = "./models/lr_hyp_model.pkl"
     clf_model = pd.read_pickle(filename)
     y_pred_proba = clf_model.predict_proba(X_tfidf)
-    y_pred = (y_pred_proba[:,1]>0.45).astype('int')
+    y_pred = (y_pred_proba[:,1]>0.55).astype('int')
     recomm_reviews_df['pred_sent'] = pd.Series(list(y_pred))
     del clf_model,y_pred_proba, y_pred
 
