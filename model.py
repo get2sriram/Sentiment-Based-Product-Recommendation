@@ -3,8 +3,6 @@ def recommendation(usr_input):
     import pandas as pd
     from sklearn.feature_extraction.text import TfidfVectorizer
 
-    reviews_df = pd.read_csv("./models/preprocessed_reviews.csv")
-
     filename = "./models/recommendation.pkl"
     usr_recommendation_df =  pd.read_pickle(filename)
 
@@ -14,9 +12,10 @@ def recommendation(usr_input):
     usr_recomm1=pd.DataFrame(usr_recomm).reset_index()
     del usr_recomm
 
+    reviews_df = pd.read_csv("./models/preprocessed_reviews.csv")
     usr_recomm1.columns=['name','score']
     recomm_reviews_df = pd.merge(left=usr_recomm1,right=reviews_df,how='inner',on='name')
-    del usr_recomm1
+    del usr_recomm1, reviews_df
 
     filename = "./models/tfidf_model.pkl"
     tfidf_model = pd.read_pickle(filename)
