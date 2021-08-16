@@ -1,3 +1,5 @@
+## Deployed site : https://sent-based-product-recomm.herokuapp.com/
+
 ## import the need libraries
 import pickle
 import pandas as pd

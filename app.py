@@ -1,3 +1,5 @@
+## Deployed site https://sent-based-product-recomm.herokuapp.com/
+
 ## import the needed libraries
 import json
 from flask import Flask, request, render_template
