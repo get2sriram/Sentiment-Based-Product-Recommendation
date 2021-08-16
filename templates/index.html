@@ -36,7 +36,7 @@
         <table class="table table-sm" id="table" data-height="460">
             <thead class="table-dark">
                 <tr>
-                 <th data-field="name">Top Products</th>
+                 <th data-field="name">Top Product Recommendations</th>
                 </tr>
              </thead>
         </table>
@@ -63,6 +63,7 @@
 
         var $table = $('#table');
         var mydata= {{graphJSON0 | safe}};
+
         $(function () {
             $('#table').bootstrapTable({
                 data: mydata
